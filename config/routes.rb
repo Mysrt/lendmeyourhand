@@ -6,6 +6,8 @@ Lendmeyourhand::Application.routes.draw do
       post 'guess'
     end
   end
+  
+  match '/random', :to => 'hands#random', :as => 'random'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

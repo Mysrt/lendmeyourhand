@@ -6,6 +6,12 @@ class HandsController < ApplicationController
 
   end
 
+  def random
+    id = rand(Hand.count)
+    id = id + 1 if id == 0
+    redirect_to :action => 'show', :id => id
+  end
+
   def index
     @hands = Hand.all
 
@@ -91,7 +97,9 @@ class HandsController < ApplicationController
     @guess = params[:guess][:guess]
 
     if @hand.name.downcase.strip.include?(@guess.downcase.strip)
-      flash[:notice] = "You got it right that was #{@hand.name}'s hand. Now guess another"
+      @hand.update_attributes(:count => @hand.count.to_i + 1)
+      flash[:notice] = "You got it right that was #{@hand.name}'s hand. 
+      This hand has been guessed correctly #{@hand.count} times!  Now guess another."
     else
       flash[:error] = "NOPE that was #{@hand.name}'s hand."
     end
