@@ -14,6 +14,7 @@ class Hand < ActiveRecord::Base
 
   validates_presence_of :name
   validates_attachment_presence :picture
+  #validates_attachment_size :picture, :less_than => 2.megabyte
 
   attr_accessor :guess
 end
