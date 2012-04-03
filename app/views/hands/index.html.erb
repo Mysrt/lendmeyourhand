@@ -2,15 +2,13 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
       <th>Hand</th>
-      <th>Actions</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @hands.each do |hand| %>
       <tr>
-        <td><%= hand.id %></td>
         <td><%= link_to image_tag(hand.picture.url(:thumb)), hand_path(hand) %></td>
         <td>
           <%= link_to 'Guess', hand_path(hand), :class => 'btn btn-mini btn-danger' %>

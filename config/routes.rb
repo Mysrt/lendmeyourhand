@@ -1,4 +1,6 @@
 Lendmeyourhand::Application.routes.draw do
+  root :to => 'hands#welcome'
+
   resources :hands do
     member do 
       post 'guess'
@@ -54,7 +56,6 @@ Lendmeyourhand::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'hands#index'
 
   # See how all your routes lay out with "rake routes"
 

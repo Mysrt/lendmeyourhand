@@ -1,6 +1,11 @@
 class HandsController < ApplicationController
   # GET /hands
   # GET /hands.json
+
+  def welcome
+
+  end
+
   def index
     @hands = Hand.all
 
@@ -86,7 +91,7 @@ class HandsController < ApplicationController
     @guess = params[:guess][:guess]
 
     if @hand.name.downcase.strip.include?(@guess.downcase.strip)
-      flash[:notice] = "You got it right that was #{@hand.name}'s hand."
+      flash[:notice] = "You got it right that was #{@hand.name}'s hand. Now guess another"
     else
       flash[:error] = "NOPE that was #{@hand.name}'s hand."
     end
