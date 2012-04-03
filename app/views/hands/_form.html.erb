@@ -1,6 +1,13 @@
+
 <%= form_for @hand, :html => { :class => 'form-horizontal', :multipart => true} do |f| %>
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Hand</legend>
+    <p>    
+      When uploading a hand please try to use a white background or something that is non distintive in the picture
+    dont make it too easy!
+    </p>
+    <br />
+    <br />
 
     <div class="control-group">
       <%= f.label :name, :class => 'control-label' %>
