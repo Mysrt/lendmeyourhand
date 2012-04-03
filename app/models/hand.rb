@@ -6,7 +6,8 @@ class Hand < ActiveRecord::Base
                 :medium => "300x300>", 
                 :thumb => "100x100>" },
     :storage => :s3,
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
+    :s3_credentials => {:access_key_id     => ENV['S3_KEY'],
+                        :secret_access_key => ENV['S3_SECRET']},
     :path => ":sytle/:id/:filename.:extension",
     :bucket => 'lendmeyourhand'  
 
