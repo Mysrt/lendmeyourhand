@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @hand.name %>
+</p>
+
+<p>
+  <b>Photo:</b>
+  <%= @hand.photo_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_hand_path(@hand) %> |
+<%= link_to 'Back', hands_path %>
