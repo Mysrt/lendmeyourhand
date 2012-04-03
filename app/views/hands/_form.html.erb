@@ -1,25 +1,24 @@
-<%= form_for(@hand) do |f| %>
-  <% if @hand.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@hand.errors.count, "error") %> prohibited this hand from being saved:</h2>
+<%= form_for @hand, :html => { :class => 'form-horizontal', :multipart => true} do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Hand</legend>
 
-      <ul>
-      <% @hand.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div class="control-group">
+      <%= f.label :name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name, :class => 'text_field' %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :photo_id %><br />
-    <%= f.text_field :photo_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="control-group">
+      <%= f.label :photo, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.file_field :picture, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', hands_path, :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>

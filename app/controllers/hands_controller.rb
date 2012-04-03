@@ -80,4 +80,17 @@ class HandsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def guess
+    @hand = Hand.find(params[:id])
+    @guess = params[:guess][:guess]
+
+    if @hand.name.downcase.strip.include?(@guess.downcase.strip)
+      flash[:notice] = "You got it right that was #{@hand.name}'s hand."
+    else
+      flash[:error] = "NOPE that was #{@hand.name}'s hand."
+    end
+      redirect_to :action => 'index'
+  end
+
 end

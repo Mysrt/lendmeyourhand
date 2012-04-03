@@ -1,25 +1,23 @@
-<h1>Listing hands</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Photo</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @hands.each do |hand| %>
-  <tr>
-    <td><%= hand.name %></td>
-    <td><%= hand.photo_id %></td>
-    <td><%= link_to 'Show', hand %></td>
-    <td><%= link_to 'Edit', edit_hand_path(hand) %></td>
-    <td><%= link_to 'Destroy', hand, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Hands</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Hand</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @hands.each do |hand| %>
+      <tr>
+        <td><%= hand.id %></td>
+        <td><%= link_to image_tag(hand.picture.url(:thumb)), hand_path(hand) %></td>
+        <td>
+          <%= link_to 'Guess', hand_path(hand), :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Hand', new_hand_path %>
+<%= link_to 'Lend a hand', new_hand_path, :class => 'btn btn-primary' %>

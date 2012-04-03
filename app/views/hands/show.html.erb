@@ -1,15 +1,30 @@
-<p id="notice"><%= notice %></p>
+<h1>Hand</h1>
+
+<%= form_for :guess, :url => {:controller => 'hands', :action => 'guess', :id => @hand.id}, :html => { :class => 'form-horizontal'} do |f| -%>
+  <fieldset>
+    <legend>Whos Hand is This?</legend>
+
+    <div class="control-group">
+      <%= f.label :guess, "Make your guess", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :guess, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit 'Guess', :class => 'btn btn-primary' %>
+    </div>
+
+  </fieldset>
+<% end -%>
 
 <p>
-  <b>Name:</b>
-  <%= @hand.name %>
-</p>
-
-<p>
-  <b>Photo:</b>
-  <%= @hand.photo_id %>
+  <b>Photo</b><br>
+  <%= image_tag @hand.picture.url(:medium) %>
 </p>
 
 
-<%= link_to 'Edit', edit_hand_path(@hand) %> |
-<%= link_to 'Back', hands_path %>
+
+
+<div class="form-actions">
+  <%= link_to 'Want to edit this hand?', edit_hand_path(@hand), :class => 'btn' %>
+</div>
