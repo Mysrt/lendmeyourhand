@@ -65,9 +65,4 @@ Lendmeyourhand::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  AWS::S3::Base.establish_connection!(
-    :access_key_id     => ENV['S3_KEY'],
-    :secret_access_key => ENV['S3_SECRET']
-  )
-
 end
